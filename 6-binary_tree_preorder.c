@@ -2,7 +2,7 @@
 /**
  * binary_tree_preorder - Preorder traversal
  * @tree: Binary tree tree
- * @(*func)(int): Function to print the number
+ * @func: Function to print the number
  * Return: Nothing
  */
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
