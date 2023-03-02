@@ -16,7 +16,8 @@ Your function must return a pointer to the new node, or NULL on failure
 Where parent is a pointer to the node to insert the left-child in
 And value is the value to store in the new node
 Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
-If parent already has a left-child, the new node must take its place, and the old left-child must be set as the left-child of the new node.
+If parent already has a left-child, the new node must take its place,  
+and the old left-child must be set as the left-child of the new node.
 ```
 
 ### Task 2. Insert right
@@ -26,7 +27,8 @@ If parent already has a left-child, the new node must take its place, and the ol
 Where parent is a pointer to the node to insert the right-child in
 And value is the value to store in the new node
 Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
-If parent already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
+If parent already has a right-child, the new node must take its place,  
+and the old right-child must be set as the right-child of the new node.
 ```
 
 ### Task 3. Delete
@@ -60,7 +62,8 @@ If node is NULL, return 0
 - Prototype: ```void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));```
 ```
 Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+And func is a pointer to a function to call for each node. 
+The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
 ```
 
@@ -69,7 +72,8 @@ If tree or func is NULL, do nothing
 - Prototype: ```void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));```
 ```
 Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+And func is a pointer to a function to call for each node. 
+The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
 ```
 
@@ -78,7 +82,8 @@ If tree or func is NULL, do nothing
 - Prototype: ```void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));```
 ```
 Where tree is a pointer to the root node of the tree to traverse
-And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+And func is a pointer to a function to call for each node. 
+The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
 ````
 
