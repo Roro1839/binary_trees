@@ -1,16 +1,20 @@
 #include "binary_trees.h"
+
 /**
- * max - finds maximum height between two paths in a tree
- * @left: length of left path
- * @right: length of right path
+ * binary_tree_is_full - checks if a tree has complete nodes
  *
- * Return: max between the two paths
+ * @tree: pointer to the root tree
+ *
+ * Return: 0 if not full and 1 if full
  */
-int max(int left, int right)
+
+int binary_tree_is_full(const binary_tree_t *tree)
 {
-	if (left < right)
-		return (right);
-	return (left);
+	if (tree == NULL)
+		return (0);
+	if (tree->left == NULL	 && tree->right == NULL)
+		return (1);
+	return (binary_tree_is_full(tree->left) & binary_tree_is_full(tree->right));
 }
 
 /**
@@ -21,16 +25,18 @@ int max(int left, int right)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int left, right;
+	int left, right, max;
 
 	if (tree == NULL)
 		return (0);
 
 	left = binary_tree_height(tree->left);
 	right = binary_tree_height(tree->right);
-
-
-	return (max(left, right) + 1);
+	if (left < right)
+		max = right;
+	else
+		max = left;
+	return (max + 1);
 }
 /**
  * binary_tree_balance - Calculate the balance factor of a tree
@@ -44,35 +50,23 @@ int binary_tree_balance(const binary_tree_t *tree)
 	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
 }
 /**
- * binary_tree_is_full - Checks if binary tree is full
- * @tree: The binary tree root
- * Return: 0 if not full 1 if full
+ * binary_tree_is_perfect - checks if a binary tree is perfect
+ * @tree: The binary tree
+ * Return: 1 if perfect else 0
  */
-int binary_tree_is_full(const binary_tree_t *tree)
-{
-        if (tree == NULL)
-                return (0);
-        if (tree->left == NULL && tree->right == NULL)
-                return (1);
-        if (tree->left == NULL || tree->right == NULL)
-                return (0);
-        return (binary_tree_is_full(tree->left) & binary_tree_is_full(tree->right));
-}
-/**
- * binary_tree_is_perfect - Checks if binary tree is perfect
- * @tree: The tree root
- * Return: 0 if not perfect 1 if it is
- */
+
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int fulltree, balance;
-	
+	int left = 0, right = 0;
+
 	if (tree == NULL)
 		return (0);
-	fulltree = binary_tree_is_full(tree);
-	balance = binary_tree_balance(tree);
-
-	if (fulltree == 1 && balance == 0)
+	left = binary_tree_is_perfect(tree->left);
+	right = binary_tree_is_perfect(tree->right);
+	if (left != right)
+		return (0);
+	if (!binary_tree_balance(tree) && binary_tree_is_full(tree))
 		return (1);
 	return (0);
+
 }
