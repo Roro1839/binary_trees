@@ -18,6 +18,6 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 	if (node == guks->left->right || node == guks->left->left)
 		return (guks->right);
 	if (node == guks->right->right || node == guks->right->left)
-		return (guks->right);
+		return (guks->left);
 	return (NULL);
 }
