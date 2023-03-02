@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-
 /**
  * max - finds maximum height between two paths in a tree
  * @left: length of left path
@@ -43,4 +42,37 @@ int binary_tree_balance(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
+}
+/**
+ * binary_tree_is_full - Checks if binary tree is full
+ * @tree: The binary tree root
+ * Return: 0 if not full 1 if full
+ */
+int binary_tree_is_full(const binary_tree_t *tree)
+{
+        if (tree == NULL)
+                return (0);
+        if (tree->left == NULL && tree->right == NULL)
+                return (1);
+        if (tree->left == NULL || tree->right == NULL)
+                return (0);
+        return (binary_tree_is_full(tree->left) & binary_tree_is_full(tree->right));
+}
+/**
+ * binary_tree_is_perfect - Checks if binary tree is perfect
+ * @tree: The tree root
+ * Return: 0 if not perfect 1 if it is
+ */
+int binary_tree_is_perfect(const binary_tree_t *tree)
+{
+	int fulltree, balance;
+	
+	if (tree == NULL)
+		return (0);
+	fulltree = binary_tree_is_full(tree);
+	balance = binary_tree_balance(tree);
+
+	if (fulltree == 1 && balance == 0)
+		return (1);
+	return (0);
 }
